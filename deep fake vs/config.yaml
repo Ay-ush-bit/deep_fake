@@ -1,0 +1,53 @@
+project:
+  name: "Multimodal Deepfake Detection System"
+  version: "0.1.0"
+  python_version: "3.11"
+
+paths:
+  data_root: "data"
+  raw_dir: "data/raw"
+  processed_dir: "data/processed"
+  metadata_dir: "data/metadata"
+  models_dir: "data/models"
+  reports_dir: "data/reports"
+  synthetic_dir: "tests/data"
+
+dataset:
+  expected_labels: ["real", "fake"]
+  file_types: [".mp4", ".avi", ".mov", ".mkv"]
+  sample_rate: 16000
+  frame_stride: 2
+  face_size: 224
+
+training:
+  seed: 42
+  batch_size: 16
+  learning_rate: 1e-4
+  epochs: 10
+  early_stopping_patience: 3
+  val_fraction: 0.2
+  test_fraction: 0.2
+
+visual:
+  model_name: "efficientnet_b0"
+  pretrained: true
+  num_classes: 2
+
+audio:
+  model_name: "facebook/wav2vec2-base"
+  pretrained: true
+  sample_rate: 16000
+  max_duration_seconds: 10
+
+fusion:
+  model_type: "logistic_regression"
+  use_standard_scaler: true
+  missing_modality_strategy: "reject_missing"
+
+streamlit:
+  app_title: "Multimodal Deepfake Detection"
+  max_upload_size_mb: 200
+
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(levelname)s - %(message)s"

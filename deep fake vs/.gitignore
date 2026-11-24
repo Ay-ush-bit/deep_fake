@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+.venv/
+venv/
+.env
+
+# Data and outputs
+/data/raw/
+/data/processed/
+/data/metadata/
+/data/models/
+/data/reports/
+*.zip
+*.tar.gz
+*.h5
+*.ckpt
+*.pt
+*.pth
+*.pkl
+*.npz
+*.joblib
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Test/artifact caches
+.pytest_cache/
+.coverage
+htmlcov/
